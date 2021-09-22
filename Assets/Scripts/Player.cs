@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] private int playerSpeed = 1;
     [SerializeField] private Rigidbody2D playerRigidBody;
     [SerializeField] private Animator playerAnimator;
 
@@ -19,7 +20,7 @@ public class Player : MonoBehaviour
         var horizontalMovement = Input.GetAxisRaw("Horizontal");
         var verticalMovement = Input.GetAxisRaw("Vertical");
 
-        playerRigidBody.velocity = new Vector2(horizontalMovement, verticalMovement);
+        playerRigidBody.velocity = new Vector2(horizontalMovement, verticalMovement) * playerSpeed;
 
         playerAnimator.SetFloat("movementX", playerRigidBody.velocity.x);
         playerAnimator.SetFloat("movementY", playerRigidBody.velocity.y);
