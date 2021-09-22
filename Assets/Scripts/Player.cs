@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        playerAnimator.SetFloat("lastX", 1);
     }
 
     // Update is called once per frame
@@ -22,5 +23,11 @@ public class Player : MonoBehaviour
 
         playerAnimator.SetFloat("movementX", playerRigidBody.velocity.x);
         playerAnimator.SetFloat("movementY", playerRigidBody.velocity.y);
+
+        if (horizontalMovement == 1 || horizontalMovement == -1 || verticalMovement == 1 || verticalMovement == -1)
+        {
+            playerAnimator.SetFloat("lastX", horizontalMovement);
+            playerAnimator.SetFloat("lastY", verticalMovement);
+        }
     }
 }
