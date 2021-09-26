@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public static Player instance;
+
+    public string transitionName;
+
     [SerializeField] private int playerSpeed = 1;
     [SerializeField] private Rigidbody2D playerRigidBody;
     [SerializeField] private Animator playerAnimator;
@@ -11,7 +15,17 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+        }
+
         playerAnimator.SetFloat("lastX", 1);
+        DontDestroyOnLoad(gameObject);
     }
 
     // Update is called once per frame

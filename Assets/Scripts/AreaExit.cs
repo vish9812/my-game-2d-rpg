@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AreaExit : MonoBehaviour
 {
+    [SerializeField] private string sceneToLoad;
+    [SerializeField] private string transitionName;
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -18,7 +22,8 @@ public class AreaExit : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Player entered");
+            Player.instance.transitionName = transitionName;
+            SceneManager.LoadScene(sceneToLoad);
         }
     }
 }
