@@ -7,10 +7,12 @@ public class AreaExit : MonoBehaviour
 {
     [SerializeField] private string sceneToLoad;
     [SerializeField] private string transitionName;
+    [SerializeField] private AreaEnter theAreaEnter;
 
     // Start is called before the first frame update
     private void Start()
     {
+        theAreaEnter.transitionName = transitionName;
     }
 
     // Update is called once per frame
